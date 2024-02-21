@@ -1,10 +1,14 @@
 package edu.mu;
 
+import edu.mu.vehicle.VehicleManager;
+
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		VehicleManager instance = VehicleManager.getInstance();
+		System.out.println(instance.initializeStock());
+		
+		
 	}
 
 }
