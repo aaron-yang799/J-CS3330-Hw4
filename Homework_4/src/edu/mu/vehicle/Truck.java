@@ -1,5 +1,7 @@
 package edu.mu.vehicle;
 
+import java.time.Year;
+
 public class Truck extends Vehicle {
 
 	
@@ -21,20 +23,17 @@ public class Truck extends Vehicle {
 
 	@Override
 	public double calculateMaintenaceCost(double distance) {
-		// TODO Auto-generated method stub
-		return 0;
+		return distance * mass * (Year.now().getValue() - modelYear) * cylinders * 0.002;
 	}
 
 	@Override
 	public double calculateFuelEfficiency(double distance, double fuelPrice) {
-		// TODO Auto-generated method stub
-		return 0;
+		return cylinders * gasTankCapacity * fuelPrice / distance * 0.1;
 	}
 
 	@Override
 	public void startEngine() {
-		// TODO Auto-generated method stub
-		
+		System.out.println(startType);
 	}
 	
 	
