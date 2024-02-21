@@ -272,4 +272,16 @@ public class VehicleManager {
 			System.out.println("	FuelEff: " + vehicle.calculateFuelEfficiency(distance, fuelPrice));
 		}
 	}
+	
+	public double getAverageFuelEfficiencyOfSUVs(double distance, double fuelPrice) {
+		double total = 0;
+		int count = 0;
+		for(Vehicle vehicle : vehicles) {
+			if(isVehicleType(vehicle, SUV.class)) {
+				total += vehicle.calculateFuelEfficiency(distance, fuelPrice);
+				++count;
+			}
+		}
+		return total/count;
+	}
 }
