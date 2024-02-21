@@ -1,6 +1,7 @@
 package edu.mu.vehicle;
 
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -66,6 +67,58 @@ public class VehicleManager {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	
+	public boolean saveVehicleList() {
+		
+		try(FileWriter writer = new FileWriter("files/vehicleListTest.csv")) {
+			writer.write("Type,Model,Make,ModelYear,Price,Color,FuelType,Mileage,Mass,Cylinders,GasTankCapacity,StartType\n");
 			
+			String Type = "";
+			for(int i = 0; i < vehicles.size(); i++) {
+				switch (vehicles.get(i).getClass().getSimpleName()) {
+	
+				case "Car":
+					Type = "Car";
+					break;
+				
+				case "MotorBike":
+					Type = "MotorBike";
+					break;
+				
+				case "SUV":
+					Type = "SUV";
+					break;
+				
+				case "Truck":
+					Type = "Truck";
+					break;
+				
+				default:
+					break;
+				}
+				
+				writer.write(Type + "," + 
+								vehicles.get(i).getBrand() + "," +
+								vehicles.get(i).getMake() + "," +
+								vehicles.get(i).getModelYear() + "," +
+								vehicles.get(i).getPrice() + "," +
+								vehicles.get(i).getColor() + "," +
+								vehicles.get(i).getFuelType() + "," +
+								vehicles.get(i).getMileage() + "," +
+								vehicles.get(i).getMass() + "," +
+								vehicles.get(i).getCylinders() + "," +
+								vehicles.get(i).getGasTankCapacity() + "," +
+								vehicles.get(i).getStartType()
+								);
+			}
+			writer.close();
+			return true;
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 }
