@@ -1,4 +1,4 @@
-package edu.mu.vehcile;
+package edu.mu.vehicle;
 
 public enum VehicleColor {
 	BLACK,
