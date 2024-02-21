@@ -1,6 +1,6 @@
 package edu.mu;
 
-import edu.mu.vehicle.VehicleManager;
+import edu.mu.vehicle.*;
 
 public class Main {
 
@@ -11,6 +11,7 @@ public class Main {
 		
 		System.out.println("Result of saveVehicleList: " + instance.saveVehicleList());
 		
+		System.out.println(instance.getNumberOfVehichlesByType(Car.class));
 	}
 
 }
