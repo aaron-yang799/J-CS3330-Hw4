@@ -41,19 +41,19 @@ public class VehicleManager {
 									StartMechanism.valueOf(fields[11])));
 							break;
 						case "SUV":
-							vehicles.add(new Truck(fields[1], fields[2], Long.parseLong(fields[3]), Double.parseDouble(fields[4]),
+							vehicles.add(new SUV(fields[1], fields[2], Long.parseLong(fields[3]), Double.parseDouble(fields[4]),
 									VehicleColor.valueOf(fields[5]), FuelType.valueOf(fields[6]), Double.parseDouble(fields[7]), 
 									Double.parseDouble(fields[8]), Integer.parseInt(fields[9]), Double.parseDouble(fields[10]), 
 									StartMechanism.valueOf(fields[11])));						
 							break;
 						case "Car":
-							vehicles.add(new Truck(fields[1], fields[2], Long.parseLong(fields[3]), Double.parseDouble(fields[4]),
+							vehicles.add(new Car(fields[1], fields[2], Long.parseLong(fields[3]), Double.parseDouble(fields[4]),
 									VehicleColor.valueOf(fields[5]), FuelType.valueOf(fields[6]), Double.parseDouble(fields[7]), 
 									Double.parseDouble(fields[8]), Integer.parseInt(fields[9]), Double.parseDouble(fields[10]), 
 									StartMechanism.valueOf(fields[11])));		
 							break;
 						case "MotorBike":
-							vehicles.add(new Truck(fields[1], fields[2], Long.parseLong(fields[3]), Double.parseDouble(fields[4]),
+							vehicles.add(new MotorBike(fields[1], fields[2], Long.parseLong(fields[3]), Double.parseDouble(fields[4]),
 									VehicleColor.valueOf(fields[5]), FuelType.valueOf(fields[6]), Double.parseDouble(fields[7]), 
 									Double.parseDouble(fields[8]), Integer.parseInt(fields[9]), Double.parseDouble(fields[10]), 
 									StartMechanism.valueOf(fields[11])));
@@ -168,6 +168,8 @@ public class VehicleManager {
 	public void displayAllCarInformation() {
 		int amountOfCars = getNumberOfVehichlesByType(Car.class);
 		int curAmountOfCars = 0;
+		
+		
 		
 		for(Vehicle curCar: vehicles) {
 			if(curCar instanceof Car) {
