@@ -121,4 +121,19 @@ public class VehicleManager {
 			return false;
 		}
 	}
+	
+
+	private boolean isVehicleType(Vehicle v, Class<Vehicle> clazz) {
+		return clazz.isInstance(v);
+	}
+	
+	public int getNumberOfVehichlesByType(Class<Vehicle> clazz) {
+		int count = 0;
+		for(Vehicle vehicle : vehicles) {
+			if(isVehicleType(vehicle, clazz)) {
+				++count;
+			}
+		}
+		return count;
+	}
 }
