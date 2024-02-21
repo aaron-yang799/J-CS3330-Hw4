@@ -9,6 +9,8 @@ public class Main {
 		System.out.println(instance.initializeStock());
 		
 		
+		System.out.println("Result of saveVehicleList: " + instance.saveVehicleList());
+		
 	}
 
 }
