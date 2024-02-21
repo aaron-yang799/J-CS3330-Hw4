@@ -106,11 +106,11 @@ public class VehicleManager {
 								vehicles.get(i).getBrand() + "," +
 								vehicles.get(i).getMake() + "," +
 								vehicles.get(i).getModelYear() + "," +
-								vehicles.get(i).getPrice() + "," +
+								String.format("%.0f", vehicles.get(i).getPrice()) + "," +
 								vehicles.get(i).getColor() + "," +
 								vehicles.get(i).getFuelType() + "," +
-								vehicles.get(i).getMileage() + "," +
-								vehicles.get(i).getMass() + "," +
+								String.format("%.0f", vehicles.get(i).getMileage()) + "," +
+								String.format("%.0f", vehicles.get(i).getMass()) + "," +
 								vehicles.get(i).getCylinders() + "," +
 								vehicles.get(i).getGasTankCapacity() + "," +
 								vehicles.get(i).getStartType() + "\n"
