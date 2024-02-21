@@ -136,4 +136,29 @@ public class VehicleManager {
 		}
 		return count;
 	}
+	
+	public boolean removeVehicle(Vehicle vehicle)
+	{
+		for(int i = 0; i < vehicles.size(); i++)
+		{
+			if(vehicles.get(i) == vehicle)
+			{
+				vehicles.remove(i);
+				return true;
+			}	
+		}
+		return false;
+	}
+	
+	public boolean addVehicle(Vehicle vehicle)
+	{
+		if(vehicle == null)
+		{
+			return false;
+		}
+		
+		vehicles.add(vehicle);
+		return true;
+		
+	}
 }
