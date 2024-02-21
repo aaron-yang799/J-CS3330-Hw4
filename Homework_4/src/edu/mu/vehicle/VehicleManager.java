@@ -113,7 +113,7 @@ public class VehicleManager {
 								vehicles.get(i).getMass() + "," +
 								vehicles.get(i).getCylinders() + "," +
 								vehicles.get(i).getGasTankCapacity() + "," +
-								vehicles.get(i).getStartType()
+								vehicles.get(i).getStartType() + "\n"
 								);
 			}
 			writer.close();
