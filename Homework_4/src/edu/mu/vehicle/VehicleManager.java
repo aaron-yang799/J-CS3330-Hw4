@@ -110,9 +110,9 @@ public class VehicleManager {
 								vehicles.get(i).getColor() + "," +
 								vehicles.get(i).getFuelType() + "," +
 								String.format("%.0f", vehicles.get(i).getMileage()) + "," +
-								String.format("%.0f", vehicles.get(i).getMass()) + "," +
+								vehicles.get(i).getMass() + "," +
 								vehicles.get(i).getCylinders() + "," +
-								vehicles.get(i).getGasTankCapacity() + "," +
+								String.format("%.0f", vehicles.get(i).getGasTankCapacity()) + "," +
 								vehicles.get(i).getStartType() + "\n"
 								);
 			}
