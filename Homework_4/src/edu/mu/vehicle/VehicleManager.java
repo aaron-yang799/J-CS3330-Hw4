@@ -11,6 +11,9 @@ public class VehicleManager {
 	private final static String filePath = "files/vehicleList.csv";
 	private static ArrayList<Vehicle> vehicles;
 	
+	private final static double distance = 300;
+	private final static double fuelPrice = 3.25;
+	
 	private VehicleManager() {
 		vehicles = new ArrayList<Vehicle>();
 	}
@@ -123,11 +126,11 @@ public class VehicleManager {
 	}
 	
 
-	private boolean isVehicleType(Vehicle v, Class<Vehicle> clazz) {
+	private boolean isVehicleType(Vehicle v, Class clazz) {
 		return clazz.isInstance(v);
 	}
 	
-	public int getNumberOfVehichlesByType(Class<Vehicle> clazz) {
+	public int getNumberOfVehichlesByType(Class clazz) {
 		int count = 0;
 		for(Vehicle vehicle : vehicles) {
 			if(isVehicleType(vehicle, clazz)) {
@@ -160,5 +163,111 @@ public class VehicleManager {
 		vehicles.add(vehicle);
 		return true;
 		
+	}
+	
+	public void displayAllCarInformation() {
+		int amountOfCars = getNumberOfVehichlesByType(Car.class);
+		int curAmountOfCars = 0;
+		
+		for(Vehicle curCar: vehicles) {
+			if(curCar instanceof Car) {
+				curAmountOfCars += 1;
+				System.out.println(curCar);
+				System.out.println("	Distance: " + curCar.calculateMaintenaceCost(distance));
+				System.out.println("	FuelEff: " + curCar.calculateFuelEfficiency(distance, fuelPrice));
+			}
+		}
+		
+		int missingCars = amountOfCars - curAmountOfCars;
+		
+		if(amountOfCars != curAmountOfCars) {
+			System.out.println("Could not find " + missingCars + " Cars.");
+		}
+		
+	}
+	
+	public void displayAllTruckInformation() {
+		int amountOfTrucks = getNumberOfVehichlesByType(Truck.class);
+		int curAmountOfTrucks = 0;
+		
+		for(Vehicle curTruck: vehicles) {
+			if(curTruck instanceof Car) {
+				curAmountOfTrucks += 1;
+				System.out.println(curTruck);
+				System.out.println("	Distance: " + curTruck.calculateMaintenaceCost(distance));
+				System.out.println("	FuelEff: " + curTruck.calculateFuelEfficiency(distance, fuelPrice));
+			}
+		}
+		
+		int missingTrucks = amountOfTrucks - curAmountOfTrucks;
+		
+		if(amountOfTrucks != curAmountOfTrucks) {
+			System.out.println("Could not find " + missingTrucks + " Trucks.");
+		}
+	}
+	
+	public void displayAllSUVInformation() {
+		int amountOfSUV = getNumberOfVehichlesByType(SUV.class);
+		int curAmountOfSUV = 0;
+		
+		for(Vehicle curSUV: vehicles) {
+			if(curSUV instanceof Car) {
+				curAmountOfSUV += 1;
+				System.out.println(curSUV);
+				System.out.println("	Distance: " + curSUV.calculateMaintenaceCost(distance));
+				System.out.println("	FuelEff: " + curSUV.calculateFuelEfficiency(distance, fuelPrice));
+			}
+		}
+		
+		int missingSUV = amountOfSUV - curAmountOfSUV;
+		
+		if(amountOfSUV != curAmountOfSUV) {
+			System.out.println("Could not find " + missingSUV + " SUVs.");
+		}
+	}
+	
+	public void displayAllMotorBikeInformation() {
+		int amountOfMotorBike = getNumberOfVehichlesByType(MotorBike.class);
+		int curAmountOfMotorBike = 0;
+		
+		for(Vehicle curMotorBike: vehicles) {
+			if(curMotorBike instanceof MotorBike) {
+				curAmountOfMotorBike += 1;
+				System.out.println(curMotorBike);
+				System.out.println("	Distance: " + curMotorBike.calculateMaintenaceCost(distance));
+				System.out.println("	FuelEff: " + curMotorBike.calculateFuelEfficiency(distance, fuelPrice));
+			}
+		}
+		
+		int missingMotorBike = amountOfMotorBike - curAmountOfMotorBike;
+		
+		if(amountOfMotorBike != curAmountOfMotorBike) {
+			System.out.println("Could not find " + missingMotorBike + " MotorBikes.");
+		}
+	}
+	
+	public void displayVehicleInformation(Vehicle v) {
+		for (Vehicle vehicle: vehicles) {
+			if(vehicle.equals(v)) {
+				System.out.println(vehicle);
+				System.out.println("	Distance: " + vehicle.calculateMaintenaceCost(distance));
+				System.out.println("	FuelEff: " + vehicle.calculateFuelEfficiency(distance, fuelPrice));
+				return;
+			}
+		}
+		System.out.println("Could not find Vehicle specified.");
+	}
+	
+	public void displayAllVehicleInformation() {
+		if(vehicles.size() == 0) {
+			System.out.println("List is empty.");
+			return;
+		}
+		
+		for(Vehicle vehicle: vehicles) {
+			System.out.println(vehicle);
+			System.out.println("	Distance: " + vehicle.calculateMaintenaceCost(distance));
+			System.out.println("	FuelEff: " + vehicle.calculateFuelEfficiency(distance, fuelPrice));
+		}
 	}
 }
