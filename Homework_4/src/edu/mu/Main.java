@@ -34,6 +34,22 @@ public class Main {
 		
 		System.out.println("Result of getNumberOfVehiclesByType: " + instance.getNumberOfVehichlesByType(Car.class));
 		
+		System.out.println("Result of getAverageFuelEfficencyOfSUV's: " + instance.getAverageFuelEfficiencyOfSUVs(400, 10.00));
+		
+		System.out.println("\n");
+		
+		Car newCar = new Car("Ford", "Edge", (long)2010, (double)8000, VehicleColor.RED, FuelType.HYBRID, (double)30000, (double)3000, 8, (double)30, StartMechanism.KEYSTART);
+		System.out.println("Result of addVehicle: " + instance.addVehicle(newCar));
+		System.out.println("\n");
+		instance.displayAllVehicleInformation();
+		System.out.println("\n");
+
+		
+		System.out.println("Result of removeVehicle: " + instance.removeVehicle(newCar));
+		System.out.println("\n");
+		instance.displayAllVehicleInformation();
+		System.out.println("\n");
+
 	}
 
 }
