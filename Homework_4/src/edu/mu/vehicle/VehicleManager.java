@@ -284,4 +284,28 @@ public class VehicleManager {
 		}
 		return total/count;
 	}
+	
+	public ArrayList<Vehicle>getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice)
+	{
+		ArrayList<Vehicle>results = new ArrayList<Vehicle>();
+		results.add(vehicles.get(0));
+		for(Vehicle vehicle : vehicles)
+		{
+			if(vehicle.calculateFuelEfficiency(distance, fuelPrice) > results.get(0).calculateFuelEfficiency(distance, fuelPrice))
+			{
+				results.set(0, vehicle);
+			}
+			else if(vehicle.calculateFuelEfficiency(distance, fuelPrice) == results.get(0).calculateFuelEfficiency(distance, fuelPrice))
+			{
+				results.add(vehicle);
+			}
+			else
+			{
+				continue;
+			}
+		}
+		
+		return results;
+	}
+
 }
