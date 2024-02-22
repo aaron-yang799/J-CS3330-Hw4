@@ -291,9 +291,13 @@ public class VehicleManager {
 		results.add(vehicles.get(0));
 		for(Vehicle vehicle : vehicles)
 		{
+			//System.out.println(vehicle.brand + " " + vehicle.calculateFuelEfficiency(distance, fuelPrice));
+			
 			if(vehicle.calculateFuelEfficiency(distance, fuelPrice) > results.get(0).calculateFuelEfficiency(distance, fuelPrice))
 			{
-				results.set(0, vehicle);
+				//System.out.println(vehicle.calculateFuelEfficiency(distance, fuelPrice));
+				results.clear();
+				results.add(vehicle);
 			}
 			else if(vehicle.calculateFuelEfficiency(distance, fuelPrice) == results.get(0).calculateFuelEfficiency(distance, fuelPrice))
 			{
@@ -304,8 +308,39 @@ public class VehicleManager {
 				continue;
 			}
 		}
-		
+		//System.out.println(results);
 		return results;
+		
 	}
+	
+	public ArrayList<Vehicle>getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice)
+	{
+		ArrayList<Vehicle>results = new ArrayList<Vehicle>();
+		results.add(vehicles.get(0));
+		for(Vehicle vehicle : vehicles)
+		{
+			//System.out.println(vehicle.brand + " " + vehicle.calculateFuelEfficiency(distance, fuelPrice));
+			
+			if(vehicle.calculateFuelEfficiency(distance, fuelPrice) < results.get(0).calculateFuelEfficiency(distance, fuelPrice))
+			{
+				//System.out.println(vehicle.calculateFuelEfficiency(distance, fuelPrice));
+				results.clear();
+				results.add(vehicle);
+			}
+			else if(vehicle.calculateFuelEfficiency(distance, fuelPrice) == results.get(0).calculateFuelEfficiency(distance, fuelPrice))
+			{
+				results.add(vehicle);
+			}
+			else
+			{
+				continue;
+			}
+		}
+		//System.out.println(results);
+		return results;
+		
+	}
+
+
 
 }

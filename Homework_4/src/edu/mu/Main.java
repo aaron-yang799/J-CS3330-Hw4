@@ -49,6 +49,16 @@ public class Main {
 		System.out.println("\n");
 		instance.displayAllVehicleInformation();
 		System.out.println("\n");
+		
+		System.out.println("Result of getVehicleWithHighestFuelEfficiency");
+		System.out.println(instance.getVehicleWithHighestFuelEfficiency(100, 5));
+		System.out.println("\n");
+		
+		System.out.println("Result ofgetVehicleWithLowestFuelEfficiency");
+		System.out.println(instance.getVehicleWithLowestFuelEfficiency(100, 5));
+
+
+
 
 	}
 
