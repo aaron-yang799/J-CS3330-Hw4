@@ -56,7 +56,26 @@ public class Main {
 //		
 //		System.out.println("Result ofgetVehicleWithLowestFuelEfficiency");
 //		System.out.println(instance.getVehicleWithLowestFuelEfficiency(100, 5));
-
+		
+//		Truck Swag = new Truck("Toyota", "Swag", (long)2000, (double)100000, VehicleColor.WHITE, FuelType.DIESEL, (double)50000, (double)2, 12, (double)25, StartMechanism.KEYSTART);
+//		Truck John = new Truck("Toyota", "John", (long)2000, (double)100000, VehicleColor.WHITE, FuelType.DIESEL, (double)50000, (double)2, 12, (double)25, StartMechanism.KEYSTART);
+//		Truck Awesome = new Truck("Toyota", "Awesome", (long)2000, (double)100000, VehicleColor.WHITE, FuelType.DIESEL, (double)50000, (double)2, 12, (double)25, StartMechanism.KEYSTART);
+//
+//		Car Quagmire = new Car("Honda", "Quagmire", (long)2024, (double)18000, VehicleColor.GRAY, FuelType.ELECTRIC, (double)50000, (double).25, 6, (double)14, StartMechanism.PUSHSTART);
+//		Car Bicycle = new Car("Honda", "Bicycle", (long)2024, (double)18000, VehicleColor.GRAY, FuelType.ELECTRIC, (double)50000, (double).25, 6, (double)14, StartMechanism.PUSHSTART);
+//		Car The = new Car("Honda", "The", (long)2024, (double)18000, VehicleColor.GRAY, FuelType.ELECTRIC, (double)50000, (double).25, 6, (double)14, StartMechanism.PUSHSTART);	
+//		
+//		instance.addVehicle(Swag);
+//		instance.addVehicle(John);
+//		instance.addVehicle(Awesome);
+//		instance.addVehicle(Quagmire);
+//		instance.addVehicle(Bicycle);
+//		instance.addVehicle(The);
+//		System.out.println("\n\n\ngetVehicleWithHighestMaintenanceCost test");
+//		System.out.println(instance.getVehicleWithHighestMaintenanceCost(100));
+//		
+//		System.out.println("\n\n\ngetVehicleWithLowestMaintenanceCost test");
+//		System.out.println(instance.getVehicleWithLowestMaintenanceCost(100));
 	}
 
 }
