@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class VehicleManager {
@@ -340,6 +341,68 @@ public class VehicleManager {
 		return results;
 		
 	}
+	
+	public Vehicle getVehicleWithHighestMaintenanceCost(double distance) {
+		
+		int highestIndex = 0;
+		
+		for(int i = 1; i < vehicles.size(); i++) {
+			if(vehicles.get(i).calculateMaintenaceCost(distance) > vehicles.get(highestIndex).calculateMaintenaceCost(distance)) {
+				//System.out.println(vehicles.get(i).getMake() + ": " + vehicles.get(i).calculateMaintenaceCost(distance));
+				highestIndex = i;
+			}
+		}
+		
+		ArrayList<Vehicle>highestCostList = new ArrayList<Vehicle>();
+		Vehicle highestCostVehicle = vehicles.get(highestIndex);
+		
+		//System.out.println("Highest Cost Vehicle: " + highestCostVehicle.getMake());
+		
+		for(Vehicle vehicle: vehicles) {
+			//System.out.println(vehicle.getMake() + ": " + vehicle.calculateMaintenaceCost(distance));
+			if(vehicle.calculateMaintenaceCost(distance) == highestCostVehicle.calculateMaintenaceCost(distance)) {
+				//System.out.println("\nAdded Vehicle to highestList:\n" + vehicle.getMake() + " " + vehicle.calculateMaintenaceCost(distance) + "\n");
+				highestCostList.add(vehicle);
+			}
+		}
+		
+		Random rand = new Random();
+		int randomIndex = rand.nextInt(highestCostList.size());
+		Vehicle randVehicle = highestCostList.get(randomIndex);
+
+		return randVehicle;
+		}
+	
+	public Vehicle getVehicleWithLowestMaintenanceCost(double distance) {
+		
+		int lowestIndex = 0;
+		
+		for(int i = 1; i < vehicles.size(); i++) {
+			if(vehicles.get(i).calculateMaintenaceCost(distance) < vehicles.get(lowestIndex).calculateMaintenaceCost(distance)) {
+				//System.out.println(vehicles.get(i).getMake() + ": " + vehicles.get(i).calculateMaintenaceCost(distance));
+				lowestIndex = i;
+			}
+		}
+		
+		ArrayList<Vehicle>lowestCostList = new ArrayList<Vehicle>();
+		Vehicle lowestCostVehicle = vehicles.get(lowestIndex);
+		
+		//System.out.println("Lowest Cost Vehicle: " + lowestCostVehicle.getMake());
+		
+		for(Vehicle vehicle: vehicles) {
+			//System.out.println(vehicle.getMake() + ": " + vehicle.calculateMaintenaceCost(distance));
+			if(vehicle.calculateMaintenaceCost(distance) == lowestCostVehicle.calculateMaintenaceCost(distance)) {
+				//System.out.println("\nAdded Vehicle to lowestCostList:\n" + vehicle.getMake() + " " + vehicle.calculateMaintenaceCost(distance) + "\n");
+				lowestCostList.add(vehicle);
+			}
+		}
+		
+		Random rand = new Random();
+		int randomIndex = rand.nextInt(lowestCostList.size());
+		Vehicle randVehicle = lowestCostList.get(randomIndex);
+
+		return randVehicle;
+		}
 
 
 
