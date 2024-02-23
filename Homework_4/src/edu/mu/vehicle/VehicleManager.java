@@ -76,7 +76,7 @@ public class VehicleManager {
 	
 	public boolean saveVehicleList() {
 		
-		try(FileWriter writer = new FileWriter("files/vehicleListTest.csv")) {
+		try(FileWriter writer = new FileWriter(filePath)) {
 			writer.write("Type,Model,Make,ModelYear,Price,Color,FuelType,Mileage,Mass,Cylinders,GasTankCapacity,StartType\n");
 			
 			String Type = "";
