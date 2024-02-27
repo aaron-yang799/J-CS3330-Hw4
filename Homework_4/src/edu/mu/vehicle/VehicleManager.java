@@ -76,11 +76,14 @@ public class VehicleManager {
 	
 	public boolean saveVehicleList() {
 		
+		//open the file we want to edit using a FileWriter object to overwrite content in the file and write the first line
 		try(FileWriter writer = new FileWriter(filePath)) {
 			writer.write("Type,Model,Make,ModelYear,Price,Color,FuelType,Mileage,Mass,Cylinders,GasTankCapacity,StartType\n");
 			
+			//loop through vehicles array list to write vehicle information to the file one by one
 			String Type = "";
 			for(int i = 0; i < vehicles.size(); i++) {
+				//find out the type of vehicle to write to the file
 				switch (vehicles.get(i).getClass().getSimpleName()) {
 	
 				case "Car":
@@ -103,6 +106,7 @@ public class VehicleManager {
 					break;
 				}
 				
+				//write the rest of the information about the vehicle to the file using getters
 				writer.write(Type + "," + 
 								vehicles.get(i).getBrand() + "," +
 								vehicles.get(i).getMake() + "," +
@@ -117,10 +121,12 @@ public class VehicleManager {
 								vehicles.get(i).getStartType() + "\n"
 								);
 			}
+			//close the file and return true after all information has been written
 			writer.close();
 			return true;
 			
 		} catch (IOException e) {
+			//if error in writing to the file, print stack trace and return false
 			e.printStackTrace();
 			return false;
 		}
@@ -355,8 +361,10 @@ public class VehicleManager {
 	
 	public Vehicle getVehicleWithHighestMaintenanceCost(double distance) {
 		
+		//create variable to track index of the vehicle with the highest maintenance cost
 		int highestIndex = 0;
 		
+		//find the vehicle with the highest maintenance cost and store index into highestIndex variable
 		for(int i = 1; i < vehicles.size(); i++) {
 			if(vehicles.get(i).calculateMaintenaceCost(distance) > vehicles.get(highestIndex).calculateMaintenaceCost(distance)) {
 				//System.out.println(vehicles.get(i).getMake() + ": " + vehicles.get(i).calculateMaintenaceCost(distance));
@@ -364,11 +372,15 @@ public class VehicleManager {
 			}
 		}
 		
+		//initialize new array list to store all vehicles with the same maintenance cost
 		ArrayList<Vehicle>highestCostList = new ArrayList<Vehicle>();
+		//instantiate new vehicle object to compare maintenance costs
 		Vehicle highestCostVehicle = vehicles.get(highestIndex);
 		
 		//System.out.println("Highest Cost Vehicle: " + highestCostVehicle.getMake());
 		
+		//iterate through vehicle list to find vehicles with the same maintenance cost
+		//if there exists a vehicle with the same maintenance cost as the highest maintenance cost, add it to highestCostList
 		for(Vehicle vehicle: vehicles) {
 			//System.out.println(vehicle.getMake() + ": " + vehicle.calculateMaintenaceCost(distance));
 			if(vehicle.calculateMaintenaceCost(distance) == highestCostVehicle.calculateMaintenaceCost(distance)) {
@@ -377,6 +389,7 @@ public class VehicleManager {
 			}
 		}
 		
+		//randomly return an object from highestCostList based on the size of HighestCostList so each object has the same chance of being returned 
 		Random rand = new Random();
 		int randomIndex = rand.nextInt(highestCostList.size());
 		Vehicle randVehicle = highestCostList.get(randomIndex);
@@ -386,8 +399,10 @@ public class VehicleManager {
 	
 	public Vehicle getVehicleWithLowestMaintenanceCost(double distance) {
 		
+		//create variable to track index of the vehicle with the lowest maintenance cost
 		int lowestIndex = 0;
 		
+		//find the vehicle with the highest maintenance cost and store index into lowestIndex variable
 		for(int i = 1; i < vehicles.size(); i++) {
 			if(vehicles.get(i).calculateMaintenaceCost(distance) < vehicles.get(lowestIndex).calculateMaintenaceCost(distance)) {
 				//System.out.println(vehicles.get(i).getMake() + ": " + vehicles.get(i).calculateMaintenaceCost(distance));
@@ -395,11 +410,15 @@ public class VehicleManager {
 			}
 		}
 		
+		//instantiate new array list to store all vehicles with the same maintenance cost
 		ArrayList<Vehicle>lowestCostList = new ArrayList<Vehicle>();
+		//instantiate new vehicle object to compare maintenance costs
 		Vehicle lowestCostVehicle = vehicles.get(lowestIndex);
 		
 		//System.out.println("Lowest Cost Vehicle: " + lowestCostVehicle.getMake());
 		
+		//iterate through vehicle list to find vehicles with the same maintenance cost
+		//if there exists a vehicle with the same maintenance cost as the lowest maintenance cost, add it to lowestCostList
 		for(Vehicle vehicle: vehicles) {
 			//System.out.println(vehicle.getMake() + ": " + vehicle.calculateMaintenaceCost(distance));
 			if(vehicle.calculateMaintenaceCost(distance) == lowestCostVehicle.calculateMaintenaceCost(distance)) {
@@ -408,6 +427,7 @@ public class VehicleManager {
 			}
 		}
 		
+		//randomly return an object form highestCostList based on the size of HighestCostList so each object hast he same change of being returned
 		Random rand = new Random();
 		int randomIndex = rand.nextInt(lowestCostList.size());
 		Vehicle randVehicle = lowestCostList.get(randomIndex);

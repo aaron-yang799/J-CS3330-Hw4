@@ -57,6 +57,7 @@ public class Main {
 //		System.out.println("Result ofgetVehicleWithLowestFuelEfficiency");
 //		System.out.println(instance.getVehicleWithLowestFuelEfficiency(100, 5));
 		
+//			Testing for getVehicleWithHighestMaintenanceCost and getVehicleWithLowestMaintenanceCost
 //		Truck Swag = new Truck("Toyota", "Swag", (long)2000, (double)100000, VehicleColor.WHITE, FuelType.DIESEL, (double)50000, (double)2, 12, (double)25, StartMechanism.KEYSTART);
 //		Truck John = new Truck("Toyota", "John", (long)2000, (double)100000, VehicleColor.WHITE, FuelType.DIESEL, (double)50000, (double)2, 12, (double)25, StartMechanism.KEYSTART);
 //		Truck Awesome = new Truck("Toyota", "Awesome", (long)2000, (double)100000, VehicleColor.WHITE, FuelType.DIESEL, (double)50000, (double)2, 12, (double)25, StartMechanism.KEYSTART);
