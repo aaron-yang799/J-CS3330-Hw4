@@ -159,6 +159,8 @@ public class VehicleManager {
 		return count;
 	}
 	
+	//removeVehicle:
+	//	Removes passed in Vehicle from the VehicleManager vehicles ArrayList field.
 	public boolean removeVehicle(Vehicle vehicle)
 	{
 		for(int i = 0; i < vehicles.size(); i++)
@@ -172,6 +174,8 @@ public class VehicleManager {
 		return false;
 	}
 	
+	//addVehicle:
+	// Adds passed in new Vehicle object to the VehicleManager vehicles ArrayList field.
 	public boolean addVehicle(Vehicle vehicle)
 	{
 		if(vehicle == null)
@@ -345,17 +349,21 @@ public class VehicleManager {
 		return total/count;
 	}
 	
+	
+	//getVehicleWithHighestFuelEfficiency:
+	//	Calculates the fuel efficiencies for each vehicle in the Vehicle ArrayList and returns the vehicle with the highest fuel efficiency, as an
+	//	Vehicle ArrayList with one element. If there are multiple Vehicles with the same highest fuel efficiency then all Vehicles with that fuel
+	//	efficiency are all added to the Vehicle ArrayList which ends up getting returned to the function caller.
 	public ArrayList<Vehicle>getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice)
 	{
 		ArrayList<Vehicle>results = new ArrayList<Vehicle>();
 		results.add(vehicles.get(0));
 		for(Vehicle vehicle : vehicles)
 		{
-			//System.out.println(vehicle.brand + " " + vehicle.calculateFuelEfficiency(distance, fuelPrice));
 			
 			if(vehicle.calculateFuelEfficiency(distance, fuelPrice) > results.get(0).calculateFuelEfficiency(distance, fuelPrice))
 			{
-				//System.out.println(vehicle.calculateFuelEfficiency(distance, fuelPrice));
+				
 				results.clear();
 				results.add(vehicle);
 			}
@@ -368,22 +376,24 @@ public class VehicleManager {
 				continue;
 			}
 		}
-		//System.out.println(results);
+		
 		return results;
 		
 	}
 	
+	//getVehicleWithLowestFuelEfficiency:
+	//	Calculates the fuel efficiencies for each vehicle in the Vehicle ArrayList and returns the vehicle with the lowest fuel efficiency, as an
+	//	Vehicle ArrayList with one element. If there are multiple Vehicles with the same lowest fuel efficiency then all Vehicles with that fuel
+	//	efficiency are all added to the Vehicle ArrayList which ends up getting returned to the function caller
 	public ArrayList<Vehicle>getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice)
 	{
 		ArrayList<Vehicle>results = new ArrayList<Vehicle>();
 		results.add(vehicles.get(0));
 		for(Vehicle vehicle : vehicles)
 		{
-			//System.out.println(vehicle.brand + " " + vehicle.calculateFuelEfficiency(distance, fuelPrice));
 			
 			if(vehicle.calculateFuelEfficiency(distance, fuelPrice) < results.get(0).calculateFuelEfficiency(distance, fuelPrice))
 			{
-				//System.out.println(vehicle.calculateFuelEfficiency(distance, fuelPrice));
 				results.clear();
 				results.add(vehicle);
 			}
@@ -396,9 +406,7 @@ public class VehicleManager {
 				continue;
 			}
 		}
-		//System.out.println(results);
 		return results;
-		
 	}
 	
 	public Vehicle getVehicleWithHighestMaintenanceCost(double distance) {
