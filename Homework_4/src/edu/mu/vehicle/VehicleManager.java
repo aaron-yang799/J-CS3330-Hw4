@@ -126,11 +126,17 @@ public class VehicleManager {
 		}
 	}
 	
-
+	//isVehicleType:
+	//	takes class parameter and checks if the Vehicle object passed is an instance of that class using isInstance method.
+	//	It is worth noting that via the method prototypes given in the assignment, the vehicle object could be tested as an instance of any object under the sun.
 	private boolean isVehicleType(Vehicle v, Class clazz) {
 		return clazz.isInstance(v);
 	}
 	
+	//getNumberOfVehiclesByType:
+	//	Is passed a class (again, could be literally anything) and uses a for-each loop to test if every vehicle is an instance of that class using the isVehicleType method.
+	//	If it is an instance of that class, then it will be tallied.
+	//	Final tally is returned to the user.
 	public int getNumberOfVehichlesByType(Class clazz) {
 		int count = 0;
 		for(Vehicle vehicle : vehicles) {
@@ -274,15 +280,20 @@ public class VehicleManager {
 		}
 	}
 	
+	//getAverageFuelEfficiency:
+	//	A for-each loop is used to test every member of the vehicles ArrayList for SUV types.
+	//	SUV type fuel efficiencies are then totaled and used to calculate the mean using the count of SUVS tallied within the loop.
 	public double getAverageFuelEfficiencyOfSUVs(double distance, double fuelPrice) {
 		double total = 0;
 		int count = 0;
+		//for each block cycling through vehicles, finding all SUV types using isVehicleType method and adding total fuel economy as well as keeping track of number of SUVS
 		for(Vehicle vehicle : vehicles) {
 			if(isVehicleType(vehicle, SUV.class)) {
 				total += vehicle.calculateFuelEfficiency(distance, fuelPrice);
 				++count;
 			}
 		}
+		//The mean is calculated
 		return total/count;
 	}
 	
