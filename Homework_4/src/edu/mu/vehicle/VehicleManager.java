@@ -28,10 +28,14 @@ public class VehicleManager {
 	
 	public boolean initializeStock() {
 		try{
+			//creates a new input stream with with a path to vehicleList.csv
 			FileInputStream inputStream = new FileInputStream(filePath);
 		
+			//creates a scanner object
 			Scanner scanner = new Scanner(inputStream);
+			//skips the first line of the .csv
 			scanner.nextLine();
+			//iterates through the .csv and creates new objects based on the type specified in the .csv (Truck, SUV, Car, Motorbike)
 			while(scanner.hasNextLine()) {
 				String[] fields = scanner.nextLine().split(",");
 					switch(fields[0]) {
@@ -63,7 +67,9 @@ public class VehicleManager {
 							break;
 					}
 			}
+		//closes the scanner
 		scanner.close();
+		//closes the input stream
 		inputStream.close();
 		return true;
 		}
@@ -179,11 +185,14 @@ public class VehicleManager {
 	}
 	
 	public void displayAllCarInformation() {
+		//utilizes getNumberOfVehiclesByType to know the correct amount of Cars to be displayed
 		int amountOfCars = getNumberOfVehichlesByType(Car.class);
+		//variable to count the current amount of Cars
 		int curAmountOfCars = 0;
 		
-		
-		
+		//iterates through arrayList vehicles, looking only at Car objects using instanceof.
+		//also increments curAmountOfCars when a Car object is displayed
+		//displays Car information including Distance and Fuel Efficiency
 		for(Vehicle curCar: vehicles) {
 			if(curCar instanceof Car) {
 				curAmountOfCars += 1;
@@ -193,8 +202,11 @@ public class VehicleManager {
 			}
 		}
 		
+		//calculates the amount of missing Cars
 		int missingCars = amountOfCars - curAmountOfCars;
 		
+		//checks if the amountOfCars is equal to the amount displayed
+		//if not, the amount missing is printed
 		if(amountOfCars != curAmountOfCars) {
 			System.out.println("Could not find " + missingCars + " Cars.");
 		}
@@ -202,9 +214,14 @@ public class VehicleManager {
 	}
 	
 	public void displayAllTruckInformation() {
+		//utilizes getNumberOfVehiclesByType to know the correct amount of Trucks to be displayed
 		int amountOfTrucks = getNumberOfVehichlesByType(Truck.class);
+		//variable to count the current amount of Trucks
 		int curAmountOfTrucks = 0;
 		
+		//iterates through arrayList vehicles, looking only at Truck objects using instanceof.
+		//also increments curAmountOfTrucks when a Truck object is displayed
+		//displays Truck information including Distance and Fuel Efficiency
 		for(Vehicle curTruck: vehicles) {
 			if(curTruck instanceof Car) {
 				curAmountOfTrucks += 1;
@@ -214,17 +231,25 @@ public class VehicleManager {
 			}
 		}
 		
+		//calculates the amount of missing Trucks
 		int missingTrucks = amountOfTrucks - curAmountOfTrucks;
 		
+		//checks if the amountOfTrucks is equal to the amount displayed
+		//if not, the amount missing is printed
 		if(amountOfTrucks != curAmountOfTrucks) {
 			System.out.println("Could not find " + missingTrucks + " Trucks.");
 		}
 	}
 	
 	public void displayAllSUVInformation() {
+		//utilizes getNumberOfVehiclesByType to know the correct amount of SUVs to be displayed
 		int amountOfSUV = getNumberOfVehichlesByType(SUV.class);
+		//variable to count the current amount of SUVs
 		int curAmountOfSUV = 0;
 		
+		//iterates through arrayList vehicles, looking only at SUV objects using instanceof.
+		//also increments curAmountOfSUV when a SUV object is displayed
+		//displays SUV information including Distance and Fuel Efficiency
 		for(Vehicle curSUV: vehicles) {
 			if(curSUV instanceof Car) {
 				curAmountOfSUV += 1;
@@ -234,17 +259,25 @@ public class VehicleManager {
 			}
 		}
 		
+		//calculates the amount of missing SUVs
 		int missingSUV = amountOfSUV - curAmountOfSUV;
 		
+		//checks if the amountOfSUV is equal to the amount displayed
+		//if not, the amount missing is printed
 		if(amountOfSUV != curAmountOfSUV) {
 			System.out.println("Could not find " + missingSUV + " SUVs.");
 		}
 	}
 	
 	public void displayAllMotorBikeInformation() {
+		//utilizes getNumberOfVehiclesByType to know the correct amount of MotorBikes to be displayed
 		int amountOfMotorBike = getNumberOfVehichlesByType(MotorBike.class);
+		//variable to count the current amount of MotorBikes
 		int curAmountOfMotorBike = 0;
 		
+		//iterates through arrayList vehicles, looking only at MotorBike objects using instanceof.
+		//also increments curAmountOfMotorBike when a MotorBike object is displayed
+		//displays MotorBike information including Distance and Fuel Efficiency
 		for(Vehicle curMotorBike: vehicles) {
 			if(curMotorBike instanceof MotorBike) {
 				curAmountOfMotorBike += 1;
@@ -254,14 +287,19 @@ public class VehicleManager {
 			}
 		}
 		
+		//calculates the amount of missing MotorBikes
 		int missingMotorBike = amountOfMotorBike - curAmountOfMotorBike;
 		
+		//checks if the amountOfMotorBike is equal to the amount displayed
+		//if not, the amount missing is printed
 		if(amountOfMotorBike != curAmountOfMotorBike) {
 			System.out.println("Could not find " + missingMotorBike + " MotorBikes.");
 		}
 	}
 	
 	public void displayVehicleInformation(Vehicle v) {
+		//iterates through vehicles arrrayList until the provided vehicle is found
+		//then displays all information of the vehicle including Distance and Fuel Efficiency
 		for (Vehicle vehicle: vehicles) {
 			if(vehicle.equals(v)) {
 				System.out.println(vehicle);
@@ -270,15 +308,19 @@ public class VehicleManager {
 				return;
 			}
 		}
+		//if the vehicle is not found a message is printed
 		System.out.println("Could not find Vehicle specified.");
 	}
 	
 	public void displayAllVehicleInformation() {
+		//checks if the vehicle arrayList is empty
 		if(vehicles.size() == 0) {
 			System.out.println("List is empty.");
 			return;
 		}
 		
+		//iterates through all vehicles in arrayList vehicles, displays the information for each vehicle
+		//including Distance and Fuel Efficiency
 		for(Vehicle vehicle: vehicles) {
 			System.out.println(vehicle);
 			System.out.println("	Distance: " + vehicle.calculateMaintenaceCost(distance));
